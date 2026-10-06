@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Рабочий лист — Части речи (3 класс)</title>
+<style>
+  :root{
+    --bg: #eef4fc;
+    --card: #ffffff;
+    --blue-50:  #f3f8ff;
+    --blue-100: #e2eefc;
+    --blue-200: #c6def8;
+    --blue-300: #a3c9f2;
+    --blue-400: #7aabe8;
+    --blue-500: #4a86d4;
+    --blue-600: #2f6bb8;
+    --blue-700: #1f4f92;
+    --blue-800: #163a6e;
+    --text: #12325c;
+    --muted: #4a6b96;
+    --ok: #1f8a52;
+    --ok-bg: #e0f5e8;
+    --err: #c93b3b;
+    --err-bg: #fde5e5;
+    --yellow: #fff6d6;
+    --yellow-dark: #e8cf7a;
+    --radius: 18px;
+    --shadow: 0 6px 20px rgba(31,79,146,.15);
+  }
+
+  *{box-sizing:border-box;}
+
+  html{ -webkit-text-size-adjust: 100%; }
+
+  body{
+    margin:0;
+    font-family: "Segoe UI", "Nunito", "Verdana", system-ui, sans-serif;
+    background: linear-gradient(160deg, #eaf2fc 0%, #dbe9fb 50%, #eef4fc 100%);
+    color: var(--text);
+    font-size: 20px;
+    line-height: 1.6;
+    padding: 24px 14px 70px;
+    min-height: 100vh;
+  }
+
+  .sheet{
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 26px;
+    box-shadow: var(--shadow);
+    padding: 34px 32px 44px;
+    border: 3px solid var(--blue-200);
+  }
+
+  /* ===== ШАПКА ===== */
+  header.sheet-head{
+    text-align:center;
+    padding-bottom: 18px;
+    border-bottom: 4px solid var(--blue-300);
+    margin-bottom: 22px;
+  }
+  header.sheet-head h1{
+    margin: 0 0 8px;
+    font-size: 2.4rem;
+    line-height: 1.15;
+    color: var(--blue-700);
+    letter-spacing: .5px;
+  }
+  header.sheet-head .subtitle{
+    font-size: 1.15rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .meta{
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content:center;
+    margin: 20px 0 4px;
+  }
+  .meta label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background: var(--blue-100);
+    border-radius: 14px;
+    padding: 10px 16px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: 2px solid var(--blue-300);
+    color: var(--blue-700);
+  }
+  .meta input{
+    border:none;
+    background: transparent;
+    border-bottom: 3px dotted var(--blue-400);
+    font-family: inherit;
+    font-size: 1.05rem;
+    padding: 3px 6px;
+    width: 160px;
+    color: var(--blue-800);
+    outline: none;
+    font-weight: 700;
+  }
+  .meta input:focus{ border-bottom-color: var(--blue-600); }
+
+  .instruction{
+    background: var(--blue-100);
+    border-left: 8px solid var(--blue-500);
+    border-radius: 14px;
+    padding: 16px 20px;
+    font-size: 1.08rem;
+    margin: 22px 0 30px;
+    color: var(--blue-800);
+  }
+  .instruction b{ color: var(--blue-700); }
+
+  /* ===== ЗАДАНИЯ ===== */
+  .task{
+    background: var(--blue-50);
+    border: 3px solid var(--blue-200);
+    border-radius: var(--radius);
+    padding: 22px 24px 26px;
+    margin-bottom: 28px;
+    transition: box-shadow .2s, border-color .2s;
+  }
+  .task:hover{
+    box-shadow: 0 8px 22px rgba(31,79,146,.18);
+    border-color: var(--blue-300);
+  }
+  .task h2{
+    font-size: 1.4rem;
+    line-height: 1.3;
+    margin: 0 0 6px;
+    display:flex;
+    align-items:center;
+    flex-wrap: wrap;
+    gap:12px;
+    color: var(--blue-700);
+  }
+  .badge{
+    font-size: .85rem;
+    font-weight: 800;
+    padding: 5px 14px;
+    border-radius: 22px;
+    letter-spacing: .4px;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+  .badge.base{
+    background: var(--blue-200);
+    color: var(--blue-800);
+    border: 2px solid var(--blue-400);
+  }
+  .badge.adv{
+    background: #ffe9c9;
+    color: #8a5210;
+    border: 2px solid #e8b876;
+  }
+  .task .task-text{
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin: 10px 0 18px;
+    font-weight: 500;
+  }
+  .task .task-text em{
+    background: var(--yellow);
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-style: normal;
+    color: #7a5c10;
+    font-weight: 700;
+  }
+
+  /* ===== ЗАДАНИЕ 1 ===== */
+  .match-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 28px;
+    margin-top: 8px;
+  }
+  .match-col h4{
+    font-size: .95rem;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    color: var(--blue-600);
+    margin: 0 0 10px;
+    text-align:center;
+    font-weight: 800;
+  }
+  .match-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: var(--blue-100);
+    border: 3px solid transparent;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    transition: all .15s;
+    user-select:none;
+    min-height: 54px;
+    color: var(--blue-800);
+  }
+  .match-item:hover{
+    transform: translateX(4px);
+    background: var(--blue-200);
+  }
+  .match-item.selected{
+    border-color: var(--blue-600);
+    background: var(--blue-300);
+    box-shadow: 0 0 0 4px rgba(74,134,212,.35);
+  }
+  .match-item.matched{
+    background: var(--ok-bg);
+    border-color: var(--ok);
+    cursor: default;
+    color: #145c37;
+  }
+  .match-item.matched::after{
+    content:"✓";
+    margin-left:auto;
+    color: var(--ok);
+    font-weight:900;
+    font-size: 1.4rem;
+  }
+  .match-item.wrong{
+    animation: shake .4s;
+    border-color: var(--err);
+    background: var(--err-bg);
+  }
+  @keyframes shake{
+    0%,100%{transform:translateX(0);}
+    25%{transform:translateX(-8px);}
+    75%{transform:translateX(8px);}
+  }
+  .match-item .num, .match-item .letter{
+    font-weight:800;
+    color: var(--blue-600);
+    min-width: 22px;
+    font-size: 1.1rem;
+  }
+
+  /* ===== ЗАДАНИЕ 2 ===== */
+  .word-bank{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 6px 0 20px;
+    padding: 16px;
+    background: var(--yellow);
+    border-radius: 16px;
+    border: 3px dashed var(--yellow-dark);
+  }
+  .word-chip{
+    background:#fff;
+    border:3px solid var(--blue-400);
+    border-radius: 22px;
+    padding: 10px 20px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--blue-700);
+    cursor: grab;
+    user-select:none;
+    transition: all .15s;
+    box-shadow: 0 3px 6px rgba(31,79,146,.15);
+  }
+  .word-chip:hover{
+    transform: translateY(-3px);
+    background: var(--blue-100);
+  }
+  .word-chip.dragging{opacity:.4;}
+  .word-chip.used{
+    opacity:.35;
+    pointer-events:none;
+    text-decoration: line-through;
+    background: #ddd;
+    border-color: #bbb;
+  }
+  .fill-row{
+    display:flex;
+    flex-wrap: wrap;
+    align-items:center;
+    gap: 10px;
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  .fill-row .num{
+    font-weight:800;
+    color: var(--blue-600);
+    font-size: 1.15rem;
+  }
+  .drop-zone{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width: 140px;
+    min-height: 50px;
+    padding: 8px 16px;
+    border: 3px dashed var(--blue-400);
+    border-radius: 12px;
+    background: #fff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--blue-700);
+    transition: all .15s;
+    text-align:center;
+  }
+  .drop-zone.over{
+    background: var(--blue-200);
+    border-color: var(--blue-600);
+    transform: scale(1.04);
+  }
+  .drop-zone.filled{
+    border-style: solid;
+    border-color: var(--blue-500);
+    background: var(--blue-100);
+  }
+  .drop-zone.correct{
+    border-color: var(--ok);
+    background: var(--ok-bg);
+    color: #145c37;
+  }
+  .drop-zone.incorrect{
+    border-color: var(--err);
+    background: var(--err-bg);
+    color: #8a2020;
+  }
+  .pos-select{
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 3px solid var(--blue-400);
+    border-radius: 10px;
+    padding: 8px 10px;
+    background: #fff;
+    color: var(--blue-700);
+    outline:none;
+    cursor:pointer;
+    min-height: 50px;
+  }
+  .pos-select:focus{ border-color: var(--blue-600); }
+  .pos-select.correct{ border-color: var(--ok); background: var(--ok-bg); color: #145c37; }
+  .pos-select.incorrect{ border-color: var(--err); background: var(--err-bg); color: #8a2020; }
+
+  /* ===== ЗАДАНИЕ 3 ===== */
+  .open-q{ margin-bottom: 20px; }
+  .open-q label{
+    display:block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--blue-700);
+  }
+  .open-q textarea{
+    width:100%;
+    min-height: 90px;
+    resize: vertical;
+    border: 3px solid var(--blue-300);
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-family: inherit;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--blue-800);
+    background: #fff;
+    outline:none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .open-q textarea:focus{
+    border-color: var(--blue-600);
+    box-shadow: 0 0 0 4px rgba(74,134,212,.2);
+  }
+  .open-q textarea.correct{ border-color: var(--ok); background: var(--ok-bg); }
+  .open-q textarea.incorrect{ border-color: var(--err); background: var(--err-bg); }
+
+  /* ===== ЗАДАНИЕ 4 ===== */
+  .build-block{
+    margin-bottom: 22px;
+    padding: 16px 18px;
+    background: #fff;
+    border-radius: 16px;
+    border: 3px solid var(--blue-200);
+  }
+  .build-block .build-num{
+    font-weight: 800;
+    color: var(--blue-600);
+    margin-bottom: 10px;
+    font-size: 1.15rem;
+  }
+  .build-words{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .build-chip{
+    background:#fff;
+    border:3px solid var(--blue-400);
+    border-radius: 20px;
+    padding: 9px 18px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--blue-700);
+    cursor: grab;
+    user-select:none;
+    transition: all .15s;
+    box-shadow: 0 3px 6px rgba(31,79,146,.12);
+  }
+  .build-chip:hover{ transform: translateY(-3px); background: var(--blue-100); }
+  .build-chip.dragging{opacity:.4;}
+  .build-chip.used{
+    opacity:.3;
+    pointer-events:none;
+    text-decoration: line-through;
+    background:#ddd;
+    border-color:#bbb;
+  }
+  .build-answer{
+    min-height: 60px;
+    border: 3px dashed var(--blue-400);
+    border-radius: 14px;
+    background: var(--blue-50);
+    padding: 12px 14px;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items:center;
+    transition: all .15s;
+  }
+  .build-answer.over{
+    background: var(--blue-200);
+    border-color: var(--blue-600);
+  }
+  .build-answer.correct{
+    border-style:solid;
+    border-color: var(--ok);
+    background: var(--ok-bg);
+  }
+  .build-answer.incorrect{
+    border-style:solid;
+    border-color: var(--err);
+    background: var(--err-bg);
+  }
+  .build-answer .placed{
+    background: var(--blue-200);
+    border: 2px solid var(--blue-500);
+    border-radius: 12px;
+    padding: 6px 14px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--blue-800);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .build-answer .placed:hover{
+    background: var(--err-bg);
+    border-color: var(--err);
+    color: #8a2020;
+  }
+  .build-pos{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .build-pos label{
+    font-size: 1rem;
+    font-weight: 700;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background: var(--blue-100);
+    border: 2px solid var(--blue-300);
+    border-radius: 12px;
+    padding: 6px 12px;
+    color: var(--blue-700);
+  }
+  .build-pos select{
+    font-family: inherit;
+    font-size: .95rem;
+    border:none;
+    background: transparent;
+    color: var(--blue-700);
+    font-weight: 800;
+    outline:none;
+    cursor:pointer;
+  }
+
+  /* ===== КНОПКИ ===== */
+  .btn{
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 800;
+    border-radius: 16px;
+    padding: 14px 30px;
+    border: none;
+    cursor: pointer;
+    transition: all .15s;
+    letter-spacing: .4px;
+    min-height: 54px;
+  }
+  .btn:active{ transform: scale(.97); }
+  .btn-primary{
+    background: var(--blue-600);
+    color:#fff;
+    box-shadow: 0 4px 0 var(--blue-800);
+  }
+  .btn-primary:hover{ background: var(--blue-500); }
+  .btn-primary:active{ box-shadow: 0 2px 0 var(--blue-800); transform: translateY(2px); }
+  .btn-secondary{
+    background: var(--blue-200);
+    color: var(--blue-800);
+    box-shadow: 0 4px 0 var(--blue-400);
+  }
+  .btn-secondary:hover{ background: var(--blue-300); }
+  .btn-warn{
+    background: #ffe1bd;
+    color: #8a5210;
+    box-shadow: 0 4px 0 #e8b876;
+  }
+  .btn-warn:hover{ background: #ffd7a3; }
+  .toolbar{
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content:center;
+    margin-top: 34px;
+    padding-top: 26px;
+    border-top: 4px dashed var(--blue-200);
+  }
+
+  /* ===== РЕЗУЛЬТАТ ===== */
+  .result-box{
+    display:none;
+    margin-top: 28px;
+    padding: 24px 26px;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, #e6f2ff, #f3f8ff);
+    border: 3px solid var(--blue-400);
+    text-align:center;
+  }
+  .result-box.show{ display:block; animation: pop .4s; }
+  @keyframes pop{
+    0%{transform:scale(.9);opacity:0;}
+    100%{transform:scale(1);opacity:1;}
+  }
+  .result-box h3{
+    margin:0 0 12px;
+    font-size:1.5rem;
+    color: var(--blue-700);
+  }
+  .result-box .score{
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: var(--blue-600);
+    line-height: 1.1;
+  }
+  .result-box p{
+    margin:10px 0;
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  /* ===== РЕФЛЕКСИЯ ===== */
+  .reflect{
+    margin-top: 34px;
+    padding: 22px 24px;
+    background: var(--blue-50);
+    border-radius: var(--radius);
+    border: 3px solid var(--blue-300);
+  }
+  .reflect h3{
+    margin:0 0 16px;
+    font-size:1.35rem;
+    color: var(--blue-700);
+  }
+  .reflect table{
+    width:100%;
+    border-collapse: collapse;
+    font-size: 1.02rem;
+  }
+  .reflect th, .reflect td{
+    padding: 12px 8px;
+    text-align:center;
+    border-bottom: 2px solid var(--blue-200);
+    color: var(--blue-800);
+  }
+  .reflect th{
+    font-size:.85rem;
+    text-transform:uppercase;
+    color: var(--blue-600);
+    letter-spacing:.5px;
+    font-weight: 800;
+  }
+  .reflect td:first-child{
+    text-align:left;
+    font-weight: 700;
+    color: var(--blue-700);
+  }
+  .reflect input[type=radio]{
+    accent-color: var(--blue-600);
+    transform: scale(1.5);
+    cursor:pointer;
+  }
+  .reflect .free{ margin-top: 18px; }
+  .reflect .free label{
+    display:block;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--blue-700);
+  }
+  .reflect .free textarea{
+    width:100%;
+    min-height: 70px;
+    border: 3px solid var(--blue-300);
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: var(--blue-800);
+    background:#fff;
+    resize: vertical;
+    outline:none;
+  }
+  .reflect .free textarea:focus{
+    border-color: var(--blue-600);
+    box-shadow: 0 0 0 4px rgba(74,134,212,.2);
+  }
+
+  /* ===== АДАПТИВ ===== */
+  @media (max-width: 820px){
+    body{ font-size: 19px; padding: 18px 10px 60px; }
+    .sheet{ padding: 26px 22px 34px; border-radius: 22px; }
+    header.sheet-head h1{ font-size: 2rem; }
+    .task h2{ font-size: 1.25rem; }
+  }
+
+  @media (max-width: 640px){
+    body{ font-size: 18px; padding: 12px 8px 50px; }
+    .sheet{ padding: 20px 14px 28px; border-radius: 18px; border-width: 2px; }
+    header.sheet-head h1{ font-size: 1.7rem; }
+    header.sheet-head .subtitle{ font-size: 1rem; }
+
+    .meta{ flex-direction: column; align-items: stretch; gap: 10px; }
+    .meta label{ justify-content: space-between; font-size: 1rem; padding: 10px 14px; }
+    .meta input{ width: 55%; text-align: right; font-size: 1rem; }
+
+    .instruction{ padding: 14px 16px; font-size: 1rem; }
+
+    .task{ padding: 18px 14px 20px; margin-bottom: 22px; border-radius: 16px; }
+    .task h2{ font-size: 1.15rem; gap: 8px; }
+    .badge{ font-size: .75rem; padding: 4px 10px; }
+    .task .task-text{ font-size: 1rem; }
+
+    /* Задание 1 */
+    .match-grid{ grid-template-columns: 1fr; gap: 6px; }
+    .match-col h4{ display:none; }
+    .match-item{ font-size: 1.05rem; padding: 12px 14px; min-height: 50px; }
+
+    /* Задание 2 */
+    .word-bank{ padding: 12px; gap: 8px; }
+    .word-chip{ padding: 8px 16px; font-size: 1rem; }
+    .fill-row{
+      font-size: 1.02rem;
+      gap: 8px;
+      padding: 10px;
+      background: #fff;
+      border-radius: 12px;
+      border: 2px solid var(--blue-200);
+    }
+    .drop-zone{ min-width: 110px; min-height: 46px; font-size: 1rem; flex: 1 0 auto; }
+    .pos-select{ width: 100%; font-size: 1rem; }
+
+    /* Задание 4 */
+    .build-chip{ padding: 8px 14px; font-size: 1rem; }
+    .build-answer{ padding: 10px; }
+    .build-answer .placed{ font-size: 1rem; padding: 5px 12px; }
+    .build-pos label{ font-size: .95rem; padding: 5px 10px; }
+
+    /* Кнопки */
+    .btn{ width: 100%; font-size: 1.05rem; padding: 14px 20px; }
+    .toolbar{ flex-direction: column; gap: 12px; }
+
+    /* Рефлексия */
+    .reflect{ padding: 16px 14px; }
+    .reflect table{ font-size: .92rem; }
+    .reflect th, .reflect td{ padding: 10px 4px; }
+    .reflect input[type=radio]{ transform: scale(1.3); }
+
+    /* Результат */
+    .result-box .score{ font-size: 2.2rem; }
+  }
+
+  @media (max-width: 400px){
+    body{ font-size: 17px; }
+    header.sheet-head h1{ font-size: 1.5rem; }
+    .task h2{ font-size: 1.08rem; }
+    .match-item{ font-size: 1rem; }
+    .drop-zone{ min-width: 90px; }
+  }
+
+  /* Дружелюбно к печати */
+  @media print{
+    body{ background:#fff; padding:0; font-size: 14px; }
+    .sheet{ box-shadow:none; border:none; padding: 10px; }
+    .toolbar{ display:none; }
+    .task{ page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <!-- ===== ШАПКА ===== -->
+  <header class="sheet-head">
+    <h1>📘 Части речи</h1>
+    <div class="subtitle">Рабочий лист по русскому языку · 3 класс</div>
+    <div class="meta">
+      <label>👤 Имя: <input type="text" id="studentName" placeholder="введи имя"></label>
+      <label>📅 Дата: <input type="date" id="studentDate"></label>
+    </div>
+  </header>
+
+  <div class="instruction">
+    <b>Инструкция:</b> Прочитай каждое задание внимательно. Выполняй задания по порядку.
+    Если затрудняешься — переходи к следующему и вернись позже. В конце нажми
+    <b>«Проверить»</b> и заполни рефлексию.
+  </div>
+
+  <!-- ===== ЗАДАНИЕ 1 ===== -->
+  <section class="task" id="task1">
+    <h2>Задание 1. Установи соответствие <span class="badge base">базовый</span></h2>
+    <div class="task-text">
+      Нажми на слово слева, затем на подходящую часть речи справа. Пары соединятся.
+    </div>
+
+    <div class="match-grid">
+      <div class="match-col" id="matchLeft">
+        <h4>Слово</h4>
+        <div class="match-item" data-id="1" data-answer="В"><span class="num">1.</span> бежать</div>
+        <div class="match-item" data-id="2" data-answer="А"><span class="num">2.</span> солнце</div>
+        <div class="match-item" data-id="3" data-answer="Б"><span class="num">3.</span> весёлый</div>
+        <div class="match-item" data-id="4" data-answer="Г"><span class="num">4.</span> он</div>
+      </div>
+      <div class="match-col" id="matchRight">
+        <h4>Часть речи</h4>
+        <div class="match-item" data-id="А"><span class="letter">А.</span> имя существительное</div>
+        <div class="match-item" data-id="Б"><span class="letter">Б.</span> имя прилагательное</div>
+        <div class="match-item" data-id="В"><span class="letter">В.</span> глагол</div>
+        <div class="match-item" data-id="Г"><span class="letter">Г.</span> местоимение</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ЗАДАНИЕ 2 ===== -->
+  <section class="task" id="task2">
+    <h2>Задание 2. Вставь пропущенное слово <span class="badge base">базовый</span></h2>
+    <div class="task-text">
+      Перетащи слово из списка в пропуск. Затем выбери часть речи этого слова.
+    </div>
+
+    <div class="word-bank" id="wordBank">
+      <div class="word-chip" draggable="true" data-word="кошка">кошка</div>
+      <div class="word-chip" draggable="true" data-word="играет">играет</div>
+      <div class="word-chip" draggable="true" data-word="зелёная">зелёная</div>
+      <div class="word-chip" draggable="true" data-word="они">они</div>
+      <div class="word-chip" draggable="true" data-word="трудную">трудную</div>
+    </div>
+
+    <div class="fill-row">
+      <span class="num">1.</span> На окне сидит пушистая
+      <span class="drop-zone" data-answer="кошка"></span>.
+      <select class="pos-select" data-answer="сущ.">
+        <option value="">часть речи</option>
+        <option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option>
+      </select>
+    </div>
+    <div class="fill-row">
+      <span class="num">2.</span> Во дворе
+      <span class="drop-zone" data-answer="играет"></span> мячом маленький щенок.
+      <select class="pos-select" data-answer="глаг.">
+        <option value="">часть речи</option>
+        <option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option>
+      </select>
+    </div>
+    <div class="fill-row">
+      <span class="num">3.</span> На лугу выросла
+      <span class="drop-zone" data-answer="зелёная"></span> трава.
+      <select class="pos-select" data-answer="прил.">
+        <option value="">часть речи</option>
+        <option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option>
+      </select>
+    </div>
+    <div class="fill-row">
+      <span class="num">4.</span>
+      <span class="drop-zone" data-answer="они"></span> бегут по дорожке в парк.
+      <select class="pos-select" data-answer="мест.">
+        <option value="">часть речи</option>
+        <option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option>
+      </select>
+    </div>
+    <div class="fill-row">
+      <span class="num">5.</span> Мальчик решил
+      <span class="drop-zone" data-answer="трудную"></span> задачу.
+      <select class="pos-select" data-answer="прил.">
+        <option value="">часть речи</option>
+        <option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- ===== ЗАДАНИЕ 3 ===== -->
+  <section class="task" id="task3">
+    <h2>Задание 3. Открытые вопросы <span class="badge adv">повышенный</span></h2>
+    <div class="task-text">
+      Ответь на вопросы полными предложениями. Пиши разборчиво.
+    </div>
+
+    <div class="open-q">
+      <label>1. Какие части речи ты знаешь? Перечисли их.</label>
+      <textarea data-keywords="существительное,прилагательное,глагол,местоимение"></textarea>
+    </div>
+    <div class="open-q">
+      <label>2. Для чего в речи нужны имена существительные?</label>
+      <textarea data-keywords="предмет,кто,что,называет,обозначает"></textarea>
+    </div>
+    <div class="open-q">
+      <label>3. Приведи пример предложения, в котором есть имя прилагательное и глагол.</label>
+      <textarea data-keywords="прилагательное,глагол"></textarea>
+    </div>
+    <div class="open-q">
+      <label>4. Чем отличается имя существительное от местоимения?</label>
+      <textarea data-keywords="называет,указывает,предмет"></textarea>
+    </div>
+  </section>
+
+  <!-- ===== ЗАДАНИЕ 4 ===== -->
+  <section class="task" id="task4">
+    <h2>Задание 4. Собери предложение <span class="badge adv">повышенный</span></h2>
+    <div class="task-text">
+      Перетащи слова в правильном порядке в поле ответа. Затем укажи часть речи каждого слова.
+      <br><em>Подсказка:</em> чтобы убрать слово из ответа — нажми на него.
+    </div>
+
+    <!-- Блок 1 -->
+    <div class="build-block" data-answer="пушистый кот сидит на окне">
+      <div class="build-num">1.</div>
+      <div class="build-words">
+        <div class="build-chip" draggable="true" data-word="пушистый">пушистый</div>
+        <div class="build-chip" draggable="true" data-word="на">на</div>
+        <div class="build-chip" draggable="true" data-word="сидит">сидит</div>
+        <div class="build-chip" draggable="true" data-word="окне">окне</div>
+        <div class="build-chip" draggable="true" data-word="кот">кот</div>
+      </div>
+      <div class="build-answer"></div>
+      <div class="build-pos">
+        <label>пушистый: <select data-pos="прил."><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option></select></label>
+        <label>кот: <select data-pos="сущ."><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option></select></label>
+        <label>сидит: <select data-pos="глаг."><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option></select></label>
+        <label>на: <select data-pos="предлог"><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>предлог</option></select></label>
+        <label>окне: <select data-pos="сущ."><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option></select></label>
+      </div>
+    </div>
+
+    <!-- Блок 2 -->
+    <div class="build-block" data-answer="они быстро бегут в парк">
+      <div class="build-num">2.</div>
+      <div class="build-words">
+        <div class="build-chip" draggable="true" data-word="они">они</div>
+        <div class="build-chip" draggable="true" data-word="быстро">быстро</div>
+        <div class="build-chip" draggable="true" data-word="бегут">бегут</div>
+        <div class="build-chip" draggable="true" data-word="в">в</div>
+        <div class="build-chip" draggable="true" data-word="парк">парк</div>
+      </div>
+      <div class="build-answer"></div>
+      <div class="build-pos">
+        <label>они: <select data-pos="мест."><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option></select></label>
+        <label>быстро: <select data-pos="нареч."><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>нареч.</option></select></label>
+        <label>бегут: <select data-pos="глаг."><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option></select></label>
+        <label>в: <select data-pos="предлог"><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>предлог</option></select></label>
+        <label>парк: <select data-pos="сущ."><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option></select></label>
+      </div>
+    </div>
+
+    <!-- Блок 3 -->
+    <div class="build-block" data-answer="я читаю интересную книгу">
+      <div class="build-num">3.</div>
+      <div class="build-words">
+        <div class="build-chip" draggable="true" data-word="я">я</div>
+        <div class="build-chip" draggable="true" data-word="читаю">читаю</div>
+        <div class="build-chip" draggable="true" data-word="интересную">интересную</div>
+        <div class="build-chip" draggable="true" data-word="книгу">книгу</div>
+      </div>
+      <div class="build-answer"></div>
+      <div class="build-pos">
+        <label>я: <select data-pos="мест."><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option></select></label>
+        <label>читаю: <select data-pos="глаг."><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option></select></label>
+        <label>интересную: <select data-pos="прил."><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option></select></label>
+        <label>книгу: <select data-pos="сущ."><option value="">?</option><option>сущ.</option><option>прил.</option><option>глаг.</option><option>мест.</option></select></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== РЕФЛЕКСИЯ ===== -->
+  <section class="reflect">
+    <h3>🪞 Рефлексия</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Вопрос</th>
+          <th>Всё понятно</th>
+          <th>Было трудно,<br>но справился</th>
+          <th>Нужна помощь</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Я знаю части речи</td>
+          <td><input type="radio" name="r1" value="ok"></td>
+          <td><input type="radio" name="r1" value="mid"></td>
+          <td><input type="radio" name="r1" value="bad"></td>
+        </tr>
+        <tr>
+          <td>Я умею находить части речи в тексте</td>
+          <td><input type="radio" name="r2" value="ok"></td>
+          <td><input type="radio" name="r2" value="mid"></td>
+          <td><input type="radio" name="r2" value="bad"></td>
+        </tr>
+        <tr>
+          <td>Мне было интересно</td>
+          <td><input type="radio" name="r3" value="ok"></td>
+          <td><input type="radio" name="r3" value="mid"></td>
+          <td><input type="radio" name="r3" value="bad"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="free">
+      <label>Что понравилось больше всего?</label>
+      <textarea id="likeMost" placeholder="напиши здесь..."></textarea>
+    </div>
+    <div class="free">
+      <label>Что показалось самым трудным?</label>
+      <textarea id="hardMost" placeholder="напиши здесь..."></textarea>
+    </div>
+  </section>
+
+  <!-- ===== КНОПКИ ===== -->
+  <div class="toolbar">
+    <button class="btn btn-primary" onclick="checkAll()">✅ Проверить</button>
+    <button class="btn btn-secondary" onclick="resetAll()">🔄 Сбросить</button>
+    <button class="btn btn-warn" onclick="showAnswers()">👀 Показать ответы</button>
+  </div>
+
+  <div class="result-box" id="resultBox">
+    <h3>Результат</h3>
+    <div class="score" id="scoreVal">0</div>
+    <p id="scoreText">баллов</p>
+    <p id="scoreDetails"></p>
+  </div>
+
+</div>
+
+<script>
+/* ========== ЗАДАНИЕ 1: СООТВЕТСТВИЕ ========== */
+let selectedLeft = null;
+let matchedPairs = 0;
+
+document.querySelectorAll('#matchLeft .match-item').forEach(item => {
+  item.addEventListener('click', () => {
+    if (item.classList.contains('matched')) return;
+    document.querySelectorAll('#matchLeft .match-item').forEach(i => i.classList.remove('selected'));
+    item.classList.add('selected');
+    selectedLeft = item;
+  });
+});
+
+document.querySelectorAll('#matchRight .match-item').forEach(item => {
+  item.addEventListener('click', () => {
+    if (!selectedLeft || item.classList.contains('matched')) return;
+    const correct = selectedLeft.dataset.answer === item.dataset.id;
+    if (correct) {
+      selectedLeft.classList.remove('selected');
+      selectedLeft.classList.add('matched');
+      item.classList.add('matched');
+      matchedPairs++;
+      selectedLeft = null;
+    } else {
+      item.classList.add('wrong');
+      setTimeout(() => item.classList.remove('wrong'), 400);
+    }
+  });
+});
+
+/* ========== ЗАДАНИЕ 2: ПЕРЕТАСКИВАНИЕ ========== */
+let draggedWord = null;
+
+document.querySelectorAll('#wordBank .word-chip').forEach(chip => {
+  chip.addEventListener('dragstart', e => {
+    draggedWord = chip;
+    chip.classList.add('dragging');
+    e.dataTransfer.setData('text/plain', chip.dataset.word);
+  });
+  chip.addEventListener('dragend', () => chip.classList.remove('dragging'));
+  // поддержка touch-устройств
+  chip.addEventListener('touchstart', e => {
+    draggedWord = chip;
+    chip.classList.add('dragging');
+  }, {passive:true});
+});
+
+document.querySelectorAll('#task2 .drop-zone').forEach(zone => {
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('over');
+    if (!draggedWord) return;
+    if (zone.dataset.filled === 'true') {
+      const oldChip = document.querySelector(`#wordBank .word-chip[data-word="${zone.dataset.currentWord}"]`);
+      if (oldChip) oldChip.classList.remove('used');
+    }
+    zone.textContent = draggedWord.dataset.word;
+    zone.dataset.filled = 'true';
+    zone.dataset.currentWord = draggedWord.dataset.word;
+    zone.classList.add('filled');
+    draggedWord.classList.add('used');
+    draggedWord = null;
+  });
+});
+
+/* ========== ЗАДАНИЕ 4: СБОРКА ПРЕДЛОЖЕНИЙ ========== */
+let draggedChip = null;
+
+document.querySelectorAll('.build-block').forEach(block => {
+  const answerZone = block.querySelector('.build-answer');
+  const chips = block.querySelectorAll('.build-chip');
+
+  chips.forEach(chip => {
+    chip.addEventListener('dragstart', e => {
+      draggedChip = chip;
+      chip.classList.add('dragging');
+      e.dataTransfer.setData('text/plain', chip.dataset.word);
+    });
+    chip.addEventListener('dragend', () => chip.classList.remove('dragging'));
+    chip.addEventListener('touchstart', e => {
+      draggedChip = chip;
+      chip.classList.add('dragging');
+    }, {passive:true});
+  });
+
+  answerZone.addEventListener('dragover', e => { e.preventDefault(); answerZone.classList.add('over'); });
+  answerZone.addEventListener('dragleave', () => answerZone.classList.remove('over'));
+  answerZone.addEventListener('drop', e => {
+    e.preventDefault();
+    answerZone.classList.remove('over');
+    if (!draggedChip) return;
+    const placed = document.createElement('span');
+    placed.className = 'placed';
+    placed.dataset.word = draggedChip.dataset.word;
+    placed.textContent = draggedChip.dataset.word;
+    placed.addEventListener('click', () => {
+      const chip = block.querySelector(`.build-chip[data-word="${placed.dataset.word}"]`);
+      if (chip) chip.classList.remove('used');
+      placed.remove();
+    });
+    answerZone.appendChild(placed);
+    draggedChip.classList.add('used');
+    draggedChip = null;
+  });
+});
+
+/* ========== ПРОВЕРКА ========== */
+function checkAll() {
+  let score = 0;
+  let maxScore = 0;
+  let details = [];
+
+  // Задание 1
+  maxScore += 4;
+  score += matchedPairs;
+  details.push(`Задание 1: ${matchedPairs}/4`);
+
+  // Задание 2
+  maxScore += 10;
+  let t2 = 0;
+  document.querySelectorAll('#task2 .drop-zone').forEach(zone => {
+    const val = (zone.dataset.currentWord || '').trim().toLowerCase();
+    const ans = zone.dataset.answer.toLowerCase();
+    if (val === ans) {
+      zone.classList.add('correct'); zone.classList.remove('incorrect'); t2++;
+    } else {
+      zone.classList.add('incorrect'); zone.classList.remove('correct');
+    }
+  });
+  document.querySelectorAll('#task2 .pos-select').forEach(sel => {
+    if (sel.value.trim() === sel.dataset.answer.trim()) {
+      sel.classList.add('correct'); sel.classList.remove('incorrect'); t2++;
+    } else {
+      sel.classList.add('incorrect'); sel.classList.remove('correct');
+    }
+  });
+  score += t2;
+  details.push(`Задание 2: ${t2}/10`);
+
+  // Задание 3
+  maxScore += 8;
+  let t3 = 0;
+  document.querySelectorAll('#task3 textarea').forEach(ta => {
+    const text = ta.value.trim().toLowerCase();
+    const keywords = ta.dataset.keywords.split(',');
+    const found = keywords.filter(k => text.includes(k.trim())).length;
+    if (text.length > 10 && found >= 2) {
+      ta.classList.add('correct'); ta.classList.remove('incorrect'); t3 += 2;
+    } else if (text.length > 5 && found >= 1) {
+      ta.classList.add('correct'); ta.classList.remove('incorrect'); t3 += 1;
+    } else {
+      ta.classList.add('incorrect'); ta.classList.remove('correct');
+    }
+  });
+  score += t3;
+  details.push(`Задание 3: ${t3}/8 (проверено автоматически, окончательно — учителем)`);
+
+  // Задание 4
+  maxScore += 12;
+  let t4 = 0;
+  document.querySelectorAll('#task4 .build-block').forEach(block => {
+    const answerZone = block.querySelector('.build-answer');
+    const placed = [...answerZone.querySelectorAll('.placed')].map(p => p.dataset.word);
+    const correctOrder = block.dataset.answer.split(' ');
+    if (placed.join(' ') === correctOrder.join(' ')) {
+      answerZone.classList.add('correct'); answerZone.classList.remove('incorrect');
+      t4 += 2;
+    } else {
+      answerZone.classList.add('incorrect'); answerZone.classList.remove('correct');
+    }
+    block.querySelectorAll('.build-pos select').forEach(sel => {
+      if (sel.value === sel.dataset.pos) {
+        sel.classList.add('correct'); sel.classList.remove('incorrect');
+        t4 += 0.5;
+      } else {
+        sel.classList.add('incorrect'); sel.classList.remove('correct');
+      }
+    });
+  });
+  t4 = Math.round(t4 * 10) / 10;
+  score += t4;
+  details.push(`Задание 4: ${t4}/12`);
+
+  const percent = Math.round(score / maxScore * 100);
+  document.getElementById('scoreVal').textContent = `${score} / ${maxScore}`;
+  let msg = '';
+  if (percent >= 90) msg = '🌟 Отлично! Ты настоящий знаток частей речи!';
+  else if (percent >= 70) msg = '👍 Хорошо! Ещё немного практики — и будет отлично.';
+  else if (percent >= 50) msg = '💪 Неплохо, но стоит повторить части речи.';
+  else msg = '📖 Попробуй ещё раз, повтори правило о частях речи.';
+  document.getElementById('scoreText').textContent = `${percent}% — ${msg}`;
+  document.getElementById('scoreDetails').innerHTML = details.join('<br>');
+  document.getElementById('resultBox').classList.add('show');
+  document.getElementById('resultBox').scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+/* ========== СБРОС ========== */
+function resetAll() {
+  if (!confirm('Ты уверен, что хочешь сбросить все ответы?')) return;
+
+  document.querySelectorAll('.match-item').forEach(i => i.classList.remove('matched','selected','wrong'));
+  matchedPairs = 0; selectedLeft = null;
+
+  document.querySelectorAll('#task2 .drop-zone').forEach(zone => {
+    zone.textContent = ''; zone.dataset.filled = ''; zone.dataset.currentWord = '';
+    zone.classList.remove('filled','correct','incorrect');
+  });
+  document.querySelectorAll('#wordBank .word-chip').forEach(c => c.classList.remove('used'));
+  document.querySelectorAll('#task2 .pos-select').forEach(s => { s.value = ''; s.classList.remove('correct','incorrect'); });
+
+  document.querySelectorAll('#task3 textarea').forEach(ta => { ta.value = ''; ta.classList.remove('correct','incorrect'); });
+
+  document.querySelectorAll('.build-answer').forEach(z => { z.innerHTML = ''; z.classList.remove('correct','incorrect','over'); });
+  document.querySelectorAll('.build-chip').forEach(c => c.classList.remove('used'));
+  document.querySelectorAll('.build-pos select').forEach(s => { s.value = ''; s.classList.remove('correct','incorrect'); });
+
+  document.getElementById('resultBox').classList.remove('show');
+  document.getElementById('scoreVal').textContent = '0';
+  document.getElementById('scoreText').textContent = 'баллов';
+  document.getElementById('scoreDetails').innerHTML = '';
+
+  document.querySelectorAll('.reflect input[type=radio]').forEach(r => r.checked = false);
+  document.getElementById('likeMost').value = '';
+  document.getElementById('hardMost').value = '';
+
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ========== ПОКАЗАТЬ ОТВЕТЫ ========== */
+function showAnswers() {
+  document.querySelectorAll('#matchLeft .match-item, #matchRight .match-item').forEach(item => item.classList.add('matched'));
+  matchedPairs = 4;
+
+  document.querySelectorAll('#task2 .drop-zone').forEach(zone => {
+    zone.textContent = zone.dataset.answer;
+    zone.dataset.filled = 'true';
+    zone.dataset.currentWord = zone.dataset.answer;
+    zone.classList.add('filled','correct');
+  });
+  document.querySelectorAll('#wordBank .word-chip').forEach(c => c.classList.add('used'));
+  document.querySelectorAll('#task2 .pos-select').forEach(s => { s.value = s.dataset.answer; s.classList.add('correct'); });
+
+  const answers3 = [
+    'Имя существительное, имя прилагательное, глагол, местоимение.',
+    'Имена существительные обозначают предметы, людей, животных и отвечают на вопросы «кто?» или «что?».',
+    'Например: «Пушистый кот громко мяукает.» (прилагательное — пушистый, глагол — мяукает).',
+    'Имя существительное называет предмет, а местоимение указывает на предмет, но не называет его.'
+  ];
+  document.querySelectorAll('#task3 textarea').forEach((ta, i) => {
+    ta.value = answers3[i] || '';
+    ta.classList.add('correct');
+  });
+
+  document.querySelectorAll('#task4 .build-block').forEach(block => {
+    const answerZone = block.querySelector('.build-answer');
+    answerZone.innerHTML = '';
+    block.dataset.answer.split(' ').forEach(word => {
+      const span = document.createElement('span');
+      span.className = 'placed';
+      span.dataset.word = word;
+      span.textContent = word;
+      span.addEventListener('click', () => {
+        const chip = block.querySelector(`.build-chip[data-word="${word}"]`);
+        if (chip) chip.classList.remove('used');
+        span.remove();
+      });
+      answerZone.appendChild(span);
+    });
+    block.querySelectorAll('.build-chip').forEach(c => c.classList.add('used'));
+    answerZone.classList.add('correct');
+    block.querySelectorAll('.build-pos select').forEach(sel => {
+      sel.value = sel.dataset.pos;
+      sel.classList.add('correct');
+    });
+  });
+
+  alert('Ответы показаны. Нажми «Проверить», чтобы увидеть результат, или «Сбросить» для новой попытки.');
+}
+</script>
+
+</body>
+</html>
